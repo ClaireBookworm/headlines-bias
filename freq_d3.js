@@ -1,9 +1,9 @@
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 
 // Import D3 library
 
 // Read the data from data.json
-d3.json('data.json').then(data => {
+d3.json('./data.json').then(data => {
 	// Extract words and frequencies from the data
 	const words = Object.keys(data);
 	const frequencies = Object.values(data);
