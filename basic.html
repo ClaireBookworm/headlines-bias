@@ -2,68 +2,38 @@
 <html>
 
 <head>
-	<title>D3.js Basic Website</title>
+	<title>Bias in Headlines | 4.032</title>
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 	<script src="freq_d3.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="style.css">
+	 -->
+	<style>
+		body {
+			font-family: "Cabinet Grotesk", sans-serif;
+			margin: 2rem 5rem 2rem 2rem;
+		}
+		h1 {
+			font-family: "Garinty", sans-serif;
+		}
+
+
+
+	</style>
+	
 </head>
 
 <body>
-	<h1>D3.js Basic Website</h1>
-
-	<svg width='500' height='500'></svg>
-<!-- 
-	<script src="freq_d3.js">
-
-		// import * as d3 from 'd3';
-
-		// Import D3 library
-		//Select SVG element
-		// var svg = d3.select('svg');
-
-		// Read the data from data.json
-		d3.json('data.json').then(data => {
-			// Extract words and frequencies from the data
-			const words = Object.keys(data);
-			const frequencies = Object.values(data);
-
-			// Set up the SVG container
-			const svg = d3.select('svg')
-				// .append('svg')
-				.attr('width', 500)
-				.attr('height', 500);
-
-			// Set up the scales
-			const xScale = d3.scaleBand()
-				.domain(words)
-				.range([0, 400])
-				.padding(0.1);
-
-			const yScale = d3.scaleLinear()
-				.domain([0, d3.max(frequencies)])
-				.range([400, 0]);
-
-			// Create the bars
-			svg.selectAll('rect')
-				.data(words)
-				.enter()
-				.append('rect')
-				.attr('x', d => xScale(d))
-				.attr('y', d => yScale(data[d]))
-				.attr('width', xScale.bandwidth())
-				.attr('height', d => 400 - yScale(data[d]))
-				.attr('fill', 'steelblue');
-
-			// Add x-axis
-			svg.append('g')
-				.attr('transform', 'translate(0, 400)')
-				.call(d3.axisBottom(xScale));
-
-			// Add y-axis
-			svg.append('g')
-				.call(d3.axisLeft(yScale));
-		});
-
-	</script> -->
+	<h1>Exploration of Wording in Headlines</h1>
+	<svg width="1750" height="500"></svg>
+	<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
+	</p>
+	<p> Types of graphs we're going to be using: </p>
+	<ul>
+		<li>Specific words we know are involved with bias (specifically, assigning blame): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter.</li>
+		<li>Dating these headlines and correlations with the public opinion of people over the election timeline. </li>
+		<li>Different news outlets and the types of headlines they are writing -> can use some sentiment analysis as well.</li>
+		<li>Basic word frequency analyses as well for you to perform your own analysis.</li>
+	</ul>
 </body>
 
 </html>
