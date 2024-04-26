@@ -3,7 +3,7 @@
 // Import D3 library
 
 // Read the data from data.json
-d3.json('./top_words.json').then(data => {
+d3.json('./cnn_dataset/top_words.json').then(data => {
 	// Extract words and frequencies from the data
 	var words = []
 	var frequencies = []
@@ -24,7 +24,7 @@ d3.json('./top_words.json').then(data => {
 	frequencies = dataSorted.map(d => d.frequency);
 
 	// Setup SVG container
-	const svg = d3.select('svg').append('svg')
+	const svg = d3.select('#chart1').append('svg')
 	.attr('width', 1750)
 	.attr('height', 500);
 

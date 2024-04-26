@@ -5,6 +5,7 @@
 	<title>Bias in Headlines | 4.032</title>
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 	<script src="freq_d3.js"></script>
+	<script src="sentiment_d3.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="style.css">
 	 -->
 	<style>
@@ -24,7 +25,7 @@
 
 <body>
 	<h1>Exploration of Wording in Headlines</h1>
-	<svg width="1750" height="500"></svg>
+	<svg id="chart1" width="1750" height="500"></svg>
 	<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
 	</p>
 	<p> Types of graphs we're going to be using: </p>
@@ -34,6 +35,8 @@
 		<li>Different news outlets and the types of headlines they are writing -> can use some sentiment analysis as well.</li>
 		<li>Basic word frequency analyses as well for you to perform your own analysis.</li>
 	</ul>
+	<svg id="chart2" width="1750" height="500"></svg>
+
 </body>
 
 </html>
