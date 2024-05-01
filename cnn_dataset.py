@@ -5,7 +5,7 @@ import pandas as pd
 title_list = []
 description_list = []
 
-with open('Election_CNN_News.csv', 'r') as file:
+with open('datasets/aggregated_headlines_dates.csv', 'r') as file:
 	reader = csv.reader(file)
 	next(reader)  # Skip the header row
 	for row in reader:
@@ -56,7 +56,7 @@ for word_index, word in enumerate(feature_names):
 word_info_df = pd.DataFrame(word_info_list, columns=["Word", "Frequency"])
 
 # Save the word info to a new CSV file
-word_info_df.to_csv('/Users/clairebookworm/github/headlines-bias/word_info.csv', index=False)
+word_info_df.to_csv('/Users/clairebookworm/github/headlines-bias/word_info_dataset2.csv', index=False)
 
 # Print a success message
 print("Word info saved to word_info.csv")

@@ -2,7 +2,10 @@ import pandas as pd
 from textblob import TextBlob
 
 # Load the CSV file
-df = pd.read_csv('newscatcher_nation.csv')
+df = pd.read_csv('datasets/aggregated_headlines_dates.csv', names=['date', 'headline'])
+# Create two lists for the 'date' and 'headline' columns
+date_list = df['date'].tolist()
+headline_list = df['headline'].tolist()
 
 # Function to calculate sentiment polarity
 def get_polarity(text):
@@ -13,16 +16,16 @@ def get_subjectivity(text):
     return TextBlob(text).sentiment.subjectivity
 
 # Apply functions to the title column
-df['polarity'] = df['title'].apply(get_polarity)
-df['subjectivity'] = df['title'].apply(get_subjectivity)
+df['polarity'] = df['headline'].apply(get_polarity)
+df['subjectivity'] = df['headline'].apply(get_subjectivity)
 
 # Convert 'published_date' to datetime and extract date
-df['published_date'] = pd.to_datetime(df['published_date']).dt.date
+# df['published_date'] = pd.to_datetime(date_list).dt.date
 
 # Select required columns
-result_df = df[['published_date', 'polarity', 'subjectivity']]
+result_df = df[['date', 'headline', 'polarity', 'subjectivity']]
 
 # Write the results to a new CSV file
-result_df.to_csv('sentiment_analysis.csv', index=False)
+result_df.to_csv('sentiment_dataset2.csv', index=False)
 
 print("Sentiment analysis completed and saved to 'sentiment_analysis.csv'.")
