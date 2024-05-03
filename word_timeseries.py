@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Read the CSV file into a pandas DataFrame
 data = pd.read_csv('datasets/aggregated_headlines_dates.csv')
-word = "investigation"
+word = "analysis"
 # Filter the DataFrame to include only rows with the specific word in the headline column
 filtered_data = data[data['headline'].str.contains(word, case=False)]
 

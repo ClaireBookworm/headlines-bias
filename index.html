@@ -4,6 +4,7 @@
 <head>
 	<title>Bias in Headlines | 4.032</title>
 	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<script src="/p5.min.js"></script>
 	<script src="freq_d3.js"></script>
 	<script src="sentiment_d3.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="style.css">
@@ -25,9 +26,10 @@
 
 <body>
 	<h1>Exploration of Wording in Headlines</h1>
-	<svg id="chart1" width="1750" height="500"></svg>
+	<script src="timeline_p5.js"></script>
 	<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
 	</p>
+	<svg id="chart1" width="1750" height="500"></svg>
 	<p> Types of graphs we're going to be using: </p>
 	<ul>
 		<li>Specific words we know are involved with bias (specifically, assigning blame): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter.</li>
