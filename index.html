@@ -10,34 +10,58 @@
 	<!-- <link rel="stylesheet" type="text/css" href="style.css">
 	 -->
 	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
 		body {
 			font-family: "Cabinet Grotesk", sans-serif;
-			margin: 2rem 5rem 2rem 2rem;
+			/* margin: 2rem 5rem 2rem 2rem; */
 		}
 		h1 {
-			font-family: "VC Garamond Condensed", sans-serif;
+			font-family: "Proxima Nova", "VC Garamond Condensed", sans-serif;
 		}
-
-
-
+		.heading {
+			background-color: black;
+			color: white;
+			font-size: 2.5rem;
+			padding: 10rem 10rem 6rem 7rem;
+			margin: 0 !important;
+		}
+		#timeline {
+			background-color: black; 
+			padding: 2rem;
+		}
+		.frequency-part2 {
+			margin: 2rem 5rem 2rem 2rem;
+		}
 	</style>
 	
 </head>
 
 <body>
-	<h1>Exploration of Wording in Headlines</h1>
-	<script src="timeline_p5.js"></script>
-	<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
-	</p>
-	<svg id="chart1" width="1750" height="500"></svg>
-	<p> Types of graphs we're going to be using: </p>
-	<ul>
-		<li>Specific words we know are involved with bias (specifically, assigning blame): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter.</li>
-		<li>Dating these headlines and correlations with the public opinion of people over the election timeline. </li>
-		<li>Different news outlets and the types of headlines they are writing -> can use some sentiment analysis as well.</li>
-		<li>Basic word frequency analyses as well for you to perform your own analysis.</li>
-	</ul>
-	<svg id="chart2" width="1750" height="500"></svg>
+	<div class="heading">
+		<h1>Exploration of Wording in Headlines</h1>
+		<br />
+		<p> 4.032 | Data Visualization | Spring 2024 </p>
+	</div>
+	<div id='timeline'>
+		<script src="timeline_p5.js"></script>
+	</div>
+	<div class="frequency-part2">
+		<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
+		</p>
+		<br />
+		<svg id="chart1" width="1750" height="500"></svg>
+		<p> Types of graphs we're going to be using: </p>
+		<ul>
+			<li>Specific words we know are involved with bias (specifically, assigning blame): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter.</li>
+			<li>Dating these headlines and correlations with the public opinion of people over the election timeline. </li>
+			<li>Different news outlets and the types of headlines they are writing -> can use some sentiment analysis as well.</li>
+			<li>Basic word frequency analyses as well for you to perform your own analysis.</li>
+		</ul>
+	</div>
+	<!-- <svg id="chart2" width="1750" height="500"></svg> -->
 
 </body>
 

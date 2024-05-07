@@ -3,7 +3,7 @@
 // Import D3 library
 
 // Read the data from data.json
-d3.json('./cnn_dataset/top_words.json').then(data => {
+d3.json('./word_freq/top_words_cnn.json').then(data => {
 	// Extract words and frequencies from the data
 	var words = []
 	var frequencies = []

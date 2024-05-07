@@ -28,7 +28,7 @@ const lineSubjectivity = d3.line()
 .x(d => x(new Date(d.published_date)))
 .y(d => y(d.subjectivity));
 
-d3.csv("sentiment_nltk.csv").then(data => {
+d3.csv("sentiment/sentiment_nltk.csv").then(data => {
 	data.forEach(d => {
 		d.polarity = +d.polarity;
 		d.subjectivity = +d.subjectivity;

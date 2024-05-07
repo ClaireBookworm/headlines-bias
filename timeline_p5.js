@@ -8,15 +8,18 @@ let allWords = [];
 let highlightedWord = '';
 
 function setup() {
-  createCanvas(1280, 720);
-  leftEdge = 100;
-  rightEdge = width - 100;
+  // createCanvas(1280, 720);
+  let myCanvas1 = createCanvas(windowWidth-75, 800);
+  leftEdge = 20;
+  rightEdge = windowWidth - 120;
+  myCanvas1.parent('timeline');
 
   loadJSON("overall_timeseries.json", dataLoaded);
 }
 
 function draw() {
-  background(60, 63, 108);
+  // background(60, 63, 108);
+  background("black");
 
   if (loaded) {
     drawWordList();
@@ -32,7 +35,7 @@ function drawWordList() {
   fill(255);
   textSize(15); // Normal text size for words list
   textAlign(LEFT, TOP);
-  let y = 120;
+  let y = 300;
   for (let word of allWords) {
     let opacity = word === highlightedWord ? 255 : 100;
     fill(255, opacity);
@@ -63,9 +66,10 @@ function wrapText(text, x, y, maxWidth, lineHeight) {
 
 function drawSessions() {
   for (let i = 0; i < sessions.length; i++) {
+    // console.log(sessionX);
     let x = sessionX[i];
     let hasHighlightedWord = highlightedWord && sessions[i].words.includes(highlightedWord);
-    let opacity = hasHighlightedWord ? 255 : 50;
+    let opacity = hasHighlightedWord ? 255 : 100;
     stroke(255, opacity);
     strokeWeight(map(sessions[i].wordDensity, 0, getMaxDensity(), 1, 5));
     line(x, 150, x, 200); // Adjusted timeline position to make space for headlines
