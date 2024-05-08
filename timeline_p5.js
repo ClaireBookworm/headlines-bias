@@ -9,7 +9,7 @@ let highlightedWord = '';
 
 function setup() {
   // createCanvas(1280, 720);
-  let myCanvas1 = createCanvas(windowWidth-75, 800);
+  let myCanvas1 = createCanvas(windowWidth-75, 1000);
   leftEdge = 20;
   rightEdge = windowWidth - 120;
   myCanvas1.parent('timeline');
@@ -134,7 +134,7 @@ function mouseMoved() {
 
 function mousePressed() {
   let mouseYPosition = mouseY;
-  let wordIndex = Math.floor((mouseYPosition - 120) / 20);
+  let wordIndex = Math.floor((mouseYPosition - 300) / 20);
   if (wordIndex >= 0 && wordIndex < allWords.length) {
     highlightedWord = allWords[wordIndex];
   }

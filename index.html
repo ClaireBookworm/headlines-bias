@@ -7,6 +7,8 @@
 	<script src="/p5.min.js"></script>
 	<script src="freq_d3.js"></script>
 	<script src="sentiment_d3.js"></script>
+	<script src="area_chart_freq.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="style.css">
 	 -->
 	<style>
@@ -15,7 +17,7 @@
 			padding: 0;
 		}
 		body {
-			font-family: "Cabinet Grotesk", sans-serif;
+			font-family: "Cabinet Grotesk","Proxima Nova", sans-serif;
 			/* margin: 2rem 5rem 2rem 2rem; */
 		}
 		h1 {
@@ -52,15 +54,18 @@
 		<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
 		</p>
 		<br />
-		<svg id="chart1" width="1750" height="500"></svg>
+		<svg id="chart1" style="width: 90vw; height: 600px"></svg>
 		<p> Types of graphs we're going to be using: </p>
-		<ul>
+		<ul style="padding-left: 2rem">
 			<li>Specific words we know are involved with bias (specifically, assigning blame): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter.</li>
 			<li>Dating these headlines and correlations with the public opinion of people over the election timeline. </li>
 			<li>Different news outlets and the types of headlines they are writing -> can use some sentiment analysis as well.</li>
 			<li>Basic word frequency analyses as well for you to perform your own analysis.</li>
 		</ul>
 	</div>
+	<!-- <canvas id="chart"></canvas> -->
+	<svg id="chart2" style="width: 90vw; height: 600px"></svg>
+	<svg src="area_chart_freq.js" id="chart3" type="module"></svg>
 	<!-- <svg id="chart2" width="1750" height="500"></svg> -->
 
 </body>

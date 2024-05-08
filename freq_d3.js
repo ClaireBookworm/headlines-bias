@@ -23,10 +23,17 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 	words = dataSorted.map(d => d.word);
 	frequencies = dataSorted.map(d => d.frequency);
 
+	const margin = { top: 20, right: 20, bottom: 30, left: 50 },
+      width = 1750 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
 	// Setup SVG container
 	const svg = d3.select('#chart1').append('svg')
-	.attr('width', 1750)
-	.attr('height', 500);
+		// .attr('width', window.innerWidth - 200)
+		// .attr('height', 500);
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// Set up the scales
 	const xScale = d3.scaleBand()
