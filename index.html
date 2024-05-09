@@ -8,8 +8,14 @@
 	<script src="freq_d3.js"></script>
 	<script src="sentiment_d3.js"></script>
 	<script src="area_chart_freq.js"></script>
+	<script src="condensed_word_freqs_d3.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<div id="tooltip" style="position: absolute; display: none; padding: 5px; background-color: #fff; border: 1px solid #d3d3d3; border-radius: 5px; pointer-events: none; font-size: 12px"></div>
+
+	<!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Proxima+Nova&display=swap">
+	<script src="https://cdn.jsdelivr.net/npm/d3-svg-patterns@1.0.0/dist/d3-svg-patterns.min.js"></script>
+
 	<!-- <link rel="stylesheet" type="text/css" href="style.css">
 	 -->
 	<style>
@@ -66,8 +72,35 @@
 	</div>
 	<!-- <canvas id="chart"></canvas> -->
 	<svg id="chart2" style="width: 90vw; height: 600px"></svg>
-	<svg src="area_chart_freq.js" id="chart3" type="module"></svg>
+	<!-- <svg src="area_chart_freq.js" id="chart3" type="module"></svg> -->
 	<!-- <svg id="chart2" width="1750" height="500"></svg> -->
+	<svg id="freq_chart3" style="width: 85vw; height: 1000px;  margin-left: 3rem; font-size: 14px" src="condensed_word_freqs_d3.js"></svg>
+	<!-- <script src="condensed_word_freqs_d3.js">
+		words = ["analysis", "clinton", "democrats", "impeachment", "investigation", "mueller", "russia", "trump", "justice", "opinion", "perspective", "power", "republicans"]
+
+		function sortByDateAscending(a, b) {
+			return a.date_parsed - b.date_parsed;
+		}
+
+		var promises = words.map((word) => {
+			file = `word_counts/word_counts_${word}.csv`;
+			return d3.csv(file).then((word_data) => {
+				word_data.forEach((d) => {
+					d.date_parsed = new Date(d.Date);
+					d.year = d.date_parsed.getFullYear();
+					d.phrase = word;
+					d.frequency = d.Frequency;
+				});
+				var data_sorted = word_data.sort(sortByDateAscending);
+				return data_sorted;
+			});
+		});
+
+		Promise.all(promises).then((data) => {
+			drawChart(data, false, [])
+			// console.log(data);
+		});
+	</script> -->
 
 </body>
 

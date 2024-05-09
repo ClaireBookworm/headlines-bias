@@ -14,7 +14,7 @@ const margin = { top: 20, right: 20, bottom: 30, left: 50 },
 
 // width=1750
 // height=500
-const x = d3.scaleTime().rangeRound([0, window.innerWidth - 200]);
+const x = d3.scaleTime().rangeRound([0, window.innerWidth]);
 const y = d3.scaleLinear().rangeRound([height, 0]);
 
 
@@ -60,6 +60,17 @@ d3.csv("sentiment/sentiment_dataset2.csv").then(data => {
 	svg.append("g")
 		.attr("class", "axis axis--y")
 		.call(d3.axisLeft(y));
+
+	// Create a tooltip
+	const tooltip = d3.select('body').append('div')
+		.attr('class', 'tooltip')
+		.style('position', 'absolute')
+		.style('background-color', 'white')
+		.style('border', 'solid')
+		.style('border-width', '1px')
+		.style('border-radius', '5px')
+		.style('padding', '10px')
+		.style('visibility', 'hidden'); // Hidden by default
 
 	svg.append("path")
 		.datum(data)

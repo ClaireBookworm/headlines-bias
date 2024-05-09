@@ -95,7 +95,7 @@ function drawSessions() {
   textSize(30);
   // textWidth(100);
   textWrap(WORD);
-  let headlinePreview = sessions[selectedIndex].headlines.slice(0, 2).join("; ");
+  let headlinePreview = sessions[selectedIndex].headlines.slice(0, 2).join("\n\n ");
   text(headlinePreview, 150, 350, 500); //, 150, 15);
 }
 

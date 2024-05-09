@@ -14,8 +14,8 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 	// const words = Object.keys(data);
 	// const frequencies = Object.values(data);
 
-	console.log(words);
-	console.log(frequencies);
+	// console.log(words);
+	// console.log(frequencies);
 
 	// Sort data by frequencies in descending order
 	var dataSorted = words.map((word, index) => ({ word, frequency: frequencies[index] }))
@@ -45,8 +45,8 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 	.domain([0, d3.max(frequencies)])
 	.range([450, 0]); // Slightly less than full height to fit axis
 
-	  // Create a tooltip
-	  const tooltip = d3.select('body').append('div')
+	// Create a tooltip
+	 const tooltip = d3.select('body').append('div')
 	  .attr('class', 'tooltip')
 	  .style('position', 'absolute')
 	  .style('background-color', 'white')
