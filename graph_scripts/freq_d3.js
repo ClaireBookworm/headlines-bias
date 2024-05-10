@@ -16,8 +16,9 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
     words = dataSorted.map(d => d.word);
     frequencies = dataSorted.map(d => d.frequency);
 
-    const margin = { top: 10, right: 20, bottom: 40, left: 50 },
-          width = window.innerWidth - margin.left - margin.right,
+    const containerWidth = d3.select("#chart1").node().getBoundingClientRect().width;
+    const margin = { top: 10, right: 35, bottom: 40, left: 35 },
+          width = containerWidth - margin.left - margin.right,
           height = 200 - margin.top - margin.bottom;
 
     // Setup SVG container
@@ -37,8 +38,14 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
         .domain([0, d3.max(frequencies)])
         .range([height, 0]);
 
+	// Sort the array in descending order
+	const sortedValues = frequencies.sort((a, b) => b - a);
+
+	// Get the second maximum value
+	const secondMaxValue = sortedValues[1];
+
     const colorScale = d3.scaleSequential(d3.interpolateGreys)
-        .domain([0, d3.max(frequencies)]);
+        .domain([0, secondMaxValue]);
 
 
 	// Create a tooltip

@@ -23,8 +23,9 @@ Promise.all(promises).then(datasets => {
 });
 
 function drawCharts(datasets, max_freq) {
+    const containerWidth = d3.select("#freq_chart3").node().getBoundingClientRect().width;
     const margin = {top: 0, right: 0, bottom: 0, left: 100};
-    const width = window.innerWidth - margin.left;  // Updated for correct width calculation
+    const width = containerWidth - margin.left;  // Updated for correct width calculation
     const height = 25; // Height of each individual chart
     const gap = 5; // Vertical gap between charts
 
@@ -33,7 +34,7 @@ function drawCharts(datasets, max_freq) {
     const tooltip = d3.select("#tooltip");
 
     const svgContainer = d3.select("#freq_chart3").append("svg")
-        .attr("width", width + margin.left + margin.right)
+        .attr("width", width + margin.left)
         .attr("height", overallHeight);
 
 	// d3.selectAll("line")
@@ -44,7 +45,7 @@ function drawCharts(datasets, max_freq) {
             d3.min(datasets, data => d3.min(data, d => d.date)),
             d3.max(datasets, data => d3.max(data, d => d.date))
         ])
-        .range([0, width]);
+        .range([0, width + margin.left]);
 
     // Create a chart for each dataset
     datasets.forEach((data, index) => {
@@ -103,6 +104,7 @@ function drawCharts(datasets, max_freq) {
 
 			// Adding X-axis with transformation for readability
 			const xAxis = d3.axisBottom(x)
+                // .attr("transform", `translate(${margin.left},0)`)
 				.tickFormat(d3.timeFormat("%Y"))  // Format as full year
 				.ticks(d3.timeYear.every(1));    // Ensure one tick per year
 

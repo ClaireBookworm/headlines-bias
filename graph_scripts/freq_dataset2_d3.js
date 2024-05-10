@@ -16,9 +16,10 @@ d3.json('./word_freq/top_words_dataset2.json').then(data => {
     words = dataSorted.map(d => d.word);
     frequencies = dataSorted.map(d => d.frequency);
 
-    const margin = { top: 5, right: 20, bottom: 45, left: 50 },
-          width = window.innerWidth - margin.left - margin.right,
-          height = 300 - margin.top - margin.bottom;
+    const containerWidth = d3.select("#chart1_dataset2").node().getBoundingClientRect().width;
+    const margin = { top: 10, right: 35, bottom: 40, left: 35 },
+          width = containerWidth - margin.left - margin.right,
+          height = 200 - margin.top - margin.bottom;
 
     // Setup SVG container
     const svg = d3.select('#chart1_dataset2').append('svg')

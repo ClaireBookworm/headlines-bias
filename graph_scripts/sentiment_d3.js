@@ -1,19 +1,10 @@
-const margin = { top: 20, right: 20, bottom: 30, left: 50 },
+
+
+// const containerWidth = d3.select("#chart2").node().getBoundingClientRect().width;
+const margin = { top: 20, right: 50, bottom: 30, left: 50 },
       width = 1750 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
-// const svg = d3.select("#chart2").append("svg")
-//       .attr("width", width + margin.left + margin.right)
-//       .attr("height", height + margin.top + margin.bottom)
-//     .append("g")
-//       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// https://community.openai.com/t/custom-gpt-news-bias-analyzer-with-api-graphing/508337
-// hume ai ! 
-// https://console.cloud.google.com/vertex-ai/generative/language/gallery?project=ancient-binder-421514
-
-// width=1750
-// height=500
 const x = d3.scaleTime().rangeRound([0, window.innerWidth]);
 const y = d3.scaleLinear().rangeRound([height, 0]);
 
@@ -41,7 +32,7 @@ d3.csv("sentiment/sentiment_dataset2.csv").then(data => {
 	});
 
 	const svg = d3.select("#chart2").append("svg")
-		.attr("width", width + margin.left + margin.right)
+		.attr("width", width) // + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -81,7 +72,7 @@ d3.csv("sentiment/sentiment_dataset2.csv").then(data => {
 		.on('mouseover', function(event, d) {
 			d3.select(this).attr('fill', '#FF5733'); // Change color on mouse over
 			tooltip.style('visibility', 'visible')
-				.text(`${d.headline}: ${d.polarity}; ${d.subjectivity}`)
+				.text(`Date: ${d3.timeFormat("%m/%d/%Y")(x.invert(event.pageX - margin.left))}`)
 				.style('left', `${event.pageX + 10}px`)
 				.style('top', `${event.pageY + 10}px`);
 		})
@@ -99,7 +90,7 @@ d3.csv("sentiment/sentiment_dataset2.csv").then(data => {
 		.on('mouseover', function(event, d) {
 			d3.select(this).attr('fill', 'steelblue'); // Change color on mouse over
 			tooltip.style('visibility', 'visible')
-				.text(`${d.headline}: ${d.polarity}; ${d.subjectivity}`)
+				.text(`Date: ${d3.timeFormat("%m/%d/%Y")(x.invert(event.pageX - margin.left))}`)
 				.style('left', `${event.pageX + 10}px`)
 				.style('top', `${event.pageY + 10}px`);
 		})

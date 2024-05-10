@@ -1,8 +1,9 @@
 // Load data from CSV file
 d3.csv("datasets/topic_minutes.csv").then(data => {
     // Set dimensions and margins for the graph
+    const containerWidth = d3.select("#minutes_chart4").node().getBoundingClientRect().width;
     const margin = { top: 20, right: 50, bottom: 30, left: 150 },
-          width = 960 - margin.left - margin.right,
+          width = containerWidth - margin.left - margin.right,
           height = 20 * data.length; // Dynamic height based on number of topics
 
     // Create SVG canvas
@@ -14,7 +15,7 @@ d3.csv("datasets/topic_minutes.csv").then(data => {
 
     // Create a scale for your x-axis
     const x = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.Total)])
+        .domain([0, 1200])
         .range([0, width]);
 
     // Create a scale for your y-axis

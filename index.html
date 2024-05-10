@@ -5,12 +5,13 @@
 	<title>Bias in Headlines | 4.032</title>
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 	<script src="/p5.min.js"></script>
-	<script src="freq_d3.js"></script>
-	<script src="freq_dataset2_d3.js"></script>
-	<script src="sentiment_d3.js"></script>
-	<script src="area_chart_freq.js"></script>
-	<script src="condensed_word_freqs_d3.js"></script>
-	<script src="topic_mins_d3.js"></script>
+	<script src="graph_scripts/freq_d3.js"></script>
+	<script src="graph_scripts/freq_dataset2_d3.js"></script>
+	<script src="graph_scripts/sentiment_d3.js"></script>
+	<script src="graph_scripts/area_chart_freq.js"></script>
+	<script src="graph_scripts/approval_d3.js"></script>
+	<script src="graph_scripts/condensed_word_freqs_d3.js"></script>
+	<script src="graph_scripts/topic_mins_d3.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<div id="tooltip" style="position: absolute; display: none; padding: 5px; background-color: #fff; border: 1px solid #d3d3d3; border-radius: 5px; pointer-events: none; font-size: 12px"></div>
 
@@ -27,7 +28,7 @@
 			padding: 0;
 		}
 		body {
-			font-family: "Cabinet Grotesk","Proxima Nova", sans-serif;
+			font-family: "Proxima Nova", sans-serif;
 			/* margin: 2rem 5rem 2rem 2rem; */
 		}
 		h1 {
@@ -44,11 +45,27 @@
 			background-color: black; 
 			padding: 2rem;
 		}
-		.frequency-part2 {
-			margin: 2rem 5rem 2rem 2rem;
+		.text {
+			margin: 2rem 20vw 2rem 20vw;
+			line-height: 1.5;
 		}
 		.division {
-			margin: 2rem 2rem 2rem 2rem;
+			margin: 2rem 4rem 2rem 4rem;
+		}
+		a {
+			color: black;
+			text-decoration-style: dotted;
+			font-weight: 500;
+		}
+		a :visited {
+			color: black;
+		}
+		a :hover {
+			/* color: #5864F5 !important; */
+			opacity: 0.8;
+			text-decoration-style: double;
+			text-decoration-color: #5864F5 !important;
+		
 		}
 	</style>
 	
@@ -61,32 +78,53 @@
 		<p> 4.032 | Data Visualization | Spring 2024 </p>
 	</div>
 	<div id='timeline'>
-		<script src="timeline_p5.js"></script>
+		<script src="graph_scripts/timeline_p5.js"></script>
+	</div>
+	<div class="text">
+		<p>Every day, ~20.9 million newspapers and magazines are circulated and read by people of a huge variety of political stances, religious beliefs, life experiences, and identities. Yet, amongst the turmoil of current events today and the many arguments about media bias, one form of bias is less spoken about, which is how <span style="font-weight: 600; color: #69b3a2">headline wording and how often a word is mentioned</span> can impact the peoples’ thoughts and beliefs. 
+		</p>
+		<br />
+		<p>
+			Here, I break down headlines from the 2016-2020 presidency and how headlines, wording, and various trends came about during the time of President Trump’s term. Datasets were primarily obtained from <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/GMFCTR">Harvard’s Dataverse</a>, a CNN headlines dataset from <a href="https://www.kaggle.com/datasets/adithprabukumar/cnn-news-headlines-on-us-election-week">Kaggle</a>, web-scraped from various news websites, from the <a href="http://tyndallreport.com/yearinreview2016/">Tyndall Report</a>, <a href="https://github.com/fivethirtyeight/data/blob/master/polls/old_model/donald_trump_favorability_old_model.csv">fivethirtyeight</a>, and so on. 
+		</p>
+		<br />
+		<p>
+			The interactive timeline above is a breakdown of articles from 2016 to 2020, the top thirteen words (that contain meaning) in headlines during that time range, and a view of when they were most frequently used. Click on any of the words or hover over any point in time on the timeline to preview what headlines were published on that day. Below is a condensed graph of the same words and a timeseries of their <span style="font-weight: 600; color: #69b3a2">frequencies</span> (scaled) 0 over time.
+		</p>
 	</div>
 	<div class="division">
 		<svg id="freq_chart3" style="width: 85vw; height: 400px;  margin-left: 1rem; font-size: 14px" src="condensed_word_freqs_d3.js"></svg>
 	</div>
-	<div class="frequency-part2">
-		<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
+	<div class="text">
+		<p>Here’s an example of how wording in headlines can change perception of blame or wrongdoing: when a headline says something like “[X] group massacres [Y] civilians,” it is natural for us to assign blame onto group X. On the other hand, a headline like “Thousands if [Y] killed” assigns no blame. More quantitatively, we can look at the times the words “slaughter” or “horrific,” for example, is used to describe group [X] or group [Y] deaths. Alternatively, we can look at the difference in the amount of coverage on the death toll of two groups to see how sometimes larger media trends can impact public perception that isn’t driven by very obvious bias in individual reporters or news sources. (A good article on this for a very active current problem <a href="https://theintercept.com/2024/01/09/newspapers-israel-palestine-bias-new-york-times/">is here</a>.) <br/><br/> For the 2016-2020 election period, there is less severity in words and impacts, but there is still a lot to be learned about how bias can change perception. Here, we look at some of the things we can learn from more active news events and see if we can draw causal relations between the two. 
 		</p>
 		<br />
-		<svg id="chart1" style="width: 90vw; height: 300px"></svg>
-		<svg id="chart1_dataset2" style="width: 90vw; height: 350px"></svg>
-		<p> Types of graphs we're going to be using: </p>
+		<p>
+			Look at graph one, there actually seems to be quite a weak correlation between the <span style="color: #d0743c; font-weight: 600">frequency</span> of the word "trump" and his <span style="color: #6b486b; font-weight: 600">approval rating</span> over time. 
+	</div>
+	<div class="division">
+		<svg id="approval_chart5" style="width: 90vw; height: 500px"></svg>
+	</div>
+	<div class="text">
+		<p>Here, we compare the coverage of the top news topics of 2016 and how much they were covered (in units of minutes on screen), which TV news outlets covered them, and so on. It's interesting to see how Trump's TV coverage more than doubled that of Clinton's, yet there seemed to be an equal split of time between the three news outls, <span style="color: #6b486b; font-weight: 600">CBS</span>, <span style="color: #a05d56; font-weight: 600">ABC</span>, and <span style="color: #d0743c; font-weight: 600">NBC</span>.</p> 
+	</div>
+	<div class="division">
+		<svg id="minutes_chart4" style="width: 90vw; height: 500px"></svg>
+	</div>
+	<div class="text">
+		<p> Finally, here are some more graphs I think would be interesting to explore, but might have some limitations: </p>
 		<ul style="padding-left: 2rem">
-			<li>Specific words we know are involved with bias (specifically, assigning blame): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter.</li>
-			<li>Dating these headlines and correlations with the public opinion of people over the election timeline. </li>
-			<li>Different news outlets and the types of headlines they are writing -> can use some sentiment analysis as well.</li>
-			<li>Basic word frequency analyses as well for you to perform your own analysis.</li>
+			<li>Specific words we know are involved with bias (for example, assigning blame or disapprovement): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter. Here, the limitation lies much in the words chosen as having biased connotations and if they could be a complete list. </li>
+			<li>How often a word is used in headlines and how that correlates with the <span style="color: orange; font-weight: 600">sentiment</span> of the article. You can actually look below here and see a graph of sentiment (objectivity and positivity) for the headlines. As you can obviously tell, it's not very accurate nor is it very useful data to draw conclusions from.</li>
+			<li>Below, we also have graphs of frequency for various words in the CNN dataset (top) and overall headlines (below). These are not normalized so can be slightly inaccurate, but only serves to show just how much "Trump" was mentioned in 2016 — which even if it felt like a lot of it was negative sentiment, lead to overall greater popularity.</li>
+			
 		</ul>
 	</div>
-	<!-- <canvas id="chart"></canvas> -->
-	<!-- <div class="division">
-		<svg id="chart2" style="width: 90vw; height: 500px"></svg>
-	</div> -->
-	
+
 	<div class="division">
-		<svg id="minutes_chart4" style="width: 90vw; height: 600px"></svg>
+		<svg id="chart1" style="width: 90vw; height: 275px"></svg>
+		<svg id="chart1_dataset2" style="width: 90vw; height: 350px"></svg>
+		<svg id="chart2" width="90vw" height="500"></svg>
 	</div>
 	<!-- <svg src="area_chart_freq.js" id="chart3" type="module"></svg> -->
 	<!-- <svg id="chart2" width="1750" height="500"></svg> -->
