@@ -14,7 +14,7 @@ function setup() {
   rightEdge = windowWidth - 120;
   myCanvas1.parent('timeline');
 
-  loadJSON("overall_timeseries.json", dataLoaded);
+  loadJSON("../datasets/overall_timeseries.json", dataLoaded);
 }
 
 function draw() {
