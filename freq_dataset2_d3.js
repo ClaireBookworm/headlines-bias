@@ -1,7 +1,7 @@
 // Import D3 library
 
 // Read the data from data.json
-d3.json('./word_freq/top_words_cnn.json').then(data => {
+d3.json('./word_freq/top_words_dataset2.json').then(data => {
     // Extract words and frequencies from the data
     var words = [];
     var frequencies = [];
@@ -16,14 +16,14 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
     words = dataSorted.map(d => d.word);
     frequencies = dataSorted.map(d => d.frequency);
 
-    const margin = { top: 10, right: 20, bottom: 40, left: 50 },
+    const margin = { top: 5, right: 20, bottom: 45, left: 50 },
           width = window.innerWidth - margin.left - margin.right,
-          height = 200 - margin.top - margin.bottom;
+          height = 300 - margin.top - margin.bottom;
 
     // Setup SVG container
-    const svg = d3.select('#chart1').append('svg')
-        .attr("width", window.innerWidth)
-        .attr("height", window.innerHeight)
+    const svg = d3.select('#chart1_dataset2').append('svg')
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -36,9 +36,16 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
     const yScale = d3.scaleLinear()
         .domain([0, d3.max(frequencies)])
         .range([height, 0]);
+	
+	// Sort the array in descending order
+	const sortedValues = frequencies.sort((a, b) => b - a);
+
+	// Get the second maximum value
+	const secondMaxValue = sortedValues[1];
 
     const colorScale = d3.scaleSequential(d3.interpolateGreys)
-        .domain([0, d3.max(frequencies)]);
+		.domain([0, secondMaxValue]);
+        // .domain([0, d3.max(frequencies)]);
 
 
 	// Create a tooltip

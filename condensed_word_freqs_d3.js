@@ -2,10 +2,15 @@
 // Define the words of interest
 const words = ["analysis", "clinton", "democrats", "impeachment", "investigation", "mueller", "russia", "trump", "justice", "opinion", "perspective", "power", "republicans"];
 
+var maxFreq = 0;
 // Load data for each word, parse dates, and sort
 const promises = words.map(word => {
+	// maxFreq = 0;
     const file = `word_counts/word_counts_${word}.csv`;
     return d3.csv(file, d => {
+		if (d.Frequency > maxFreq) {
+			maxFreq = +d.Frequency;
+		}
         return { date: new Date(d.Date), frequency: +d.Frequency, phrase: word };
     }).then(data => {
         return data.sort((a, b) => a.date - b.date);
@@ -14,10 +19,10 @@ const promises = words.map(word => {
 
 // Handle data after all promises resolve
 Promise.all(promises).then(datasets => {
-    drawCharts(datasets);
+    drawCharts(datasets, maxFreq);
 });
 
-function drawCharts(datasets) {
+function drawCharts(datasets, max_freq) {
     const margin = {top: 0, right: 0, bottom: 0, left: 100};
     const width = window.innerWidth - margin.left;  // Updated for correct width calculation
     const height = 25; // Height of each individual chart
@@ -43,15 +48,21 @@ function drawCharts(datasets) {
 
     // Create a chart for each dataset
     datasets.forEach((data, index) => {
+		// console.log(data)
         const y = d3.scaleLinear()
+			// .domain([0, d3.max(data, function(d) { return d3.max(d.frequency, function(d) {return +d.frequency}) })])
+			// .domain([0,  max_freq])
             .domain([0, d3.max(data, d => d.frequency)])
+			// .range([ (height/categories.length)*1.1, 0 ]);
+
             .range([height, 0]);
 	
 
         const area = d3.area()
             .x(d => x(d.date))
             .y0(height)
-            .y1(d => y(d.frequency))
+			.y1(d => y(d.frequency))
+            // .y1(d => y(d.frequency))
             .curve(d3.curveMonotoneX);
 
         const chartGroup = svgContainer.append("g")
