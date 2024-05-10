@@ -3,7 +3,8 @@
 *4.032 | Data Visualization | Spring 2024*
 
 Link: [headlines.netlify.app](https://headlines.netlify.app)
-For Info Design ([4.032](https://infodesign.mit.edu)) taught by Ben Fry at MIT.
+
+Class: Info Design ([4.032](https://infodesign.mit.edu)) taught by Ben Fry at MIT.
 
 ---
 
