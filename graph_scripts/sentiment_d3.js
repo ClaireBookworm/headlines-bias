@@ -1,11 +1,11 @@
 
 
 // const containerWidth = d3.select("#chart2").node().getBoundingClientRect().width;
-const margin = { top: 20, right: 50, bottom: 30, left: 50 },
+const margin = { top: 20, right: 50, bottom: 30, left: 30 },
       width = 1750 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
-const x = d3.scaleTime().rangeRound([0, window.innerWidth]);
+const x = d3.scaleTime().rangeRound([0, window.innerWidth - margin.left - margin.right]);
 const y = d3.scaleLinear().rangeRound([height, 0]);
 
 
@@ -31,8 +31,9 @@ d3.csv("sentiment/sentiment_dataset2.csv").then(data => {
 		// d.published_date = new Date(d.published_date);
 	});
 
+	const containerWidth = d3.select("#chart2").node().getBoundingClientRect().width;
 	const svg = d3.select("#chart2").append("svg")
-		.attr("width", width) // + margin.left + margin.right)
+		.attr("width", containerWidth) // + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
