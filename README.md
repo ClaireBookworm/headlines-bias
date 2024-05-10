@@ -2,6 +2,8 @@
 
 *4.032 | Data Visualization | Spring 2024*
 
+Link: [headlines.netlify.app](https://headlines.netlify.app)
+
 ---
 
 Every day, ~20.9 million newspapers and magazines are circulated and read by people of a huge variety of political stances, religious beliefs, life experiences, and identities. Yet, amongst the turmoil of current events today and the many arguments about media bias, one form of bias is less spoken about, which is how headline wording and word frequencies can impact the peoples’ thoughts and beliefs. 
