@@ -10,7 +10,7 @@ Here, I break down headlines from the 2016-2020 presidency and how headlines, wo
 
 This project takes a first stab at the types of data we have available and what sorts of explorations we can make. 
 
-Some photos:
+**Here are some snapshots of what we found:**
 
 ![Condensed Frequencies](https://github.com/ClaireBookworm/headlines-bias/blob/main/screenshots/condensed_frequencies.png)
 
@@ -23,3 +23,5 @@ The distribution of headlines by news outlet.
 ![Approval vs Frequency](https://github.com/ClaireBookworm/headlines-bias/blob/main/screenshots/approval_frequency.png)
 
 The relationship between Trump's approval rating and the frequency of headlines mentioning him.
+
+I'd really want to explore specific words we know are involved with bias (for example, assigning blame or disapprovement): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter. Here, the limitation lies much in the words chosen as having biased connotations and if they could be a complete list.
