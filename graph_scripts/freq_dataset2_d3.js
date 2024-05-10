@@ -19,7 +19,7 @@ d3.json('./word_freq/top_words_dataset2.json').then(data => {
     const containerWidth = d3.select("#chart1_dataset2").node().getBoundingClientRect().width;
     const margin = { top: 10, right: 35, bottom: 40, left: 35 },
           width = containerWidth - margin.left - margin.right,
-          height = 200 - margin.top - margin.bottom;
+          height = 200 + margin.top + margin.bottom;
 
     // Setup SVG container
     const svg = d3.select('#chart1_dataset2').append('svg')

@@ -115,7 +115,7 @@
 		<p> Finally, here are some more graphs I think would be interesting to explore, but might have some limitations: </p>
 		<ul style="padding-left: 2rem">
 			<li>Specific words we know are involved with bias (for example, assigning blame or disapprovement): "stormed out", "slaughtered", "complains". Any words that might have connotations that show the bias of the reporter. Here, the limitation lies much in the words chosen as having biased connotations and if they could be a complete list. </li>
-			<li>How often a word is used in headlines and how that correlates with the <span style="color: orange; font-weight: 600">sentiment</span> of the article. You can actually look below here and see a graph of sentiment (objectivity and positivity) for the headlines. As you can obviously tell, it's not very accurate nor is it very useful data to draw conclusions from.</li>
+			<li>How often a word is used in headlines and how that correlates with the <span style="color: #a05d56; font-weight: 600">sentiment</span> of the article. You can actually look below here and see a graph of sentiment (objectivity and positivity) for the headlines. As you can obviously tell, it's not very accurate nor is it very useful data to draw conclusions from.</li>
 			<li>Below, we also have graphs of frequency for various words in the CNN dataset (top) and overall headlines (below). These are not normalized so can be slightly inaccurate, but only serves to show just how much "Trump" was mentioned in 2016 — which even if it felt like a lot of it was negative sentiment, lead to overall greater popularity.</li>
 			
 		</ul>
@@ -124,6 +124,11 @@
 	<div class="division">
 		<svg id="chart1" style="width: 90vw; height: 275px"></svg>
 		<svg id="chart1_dataset2" style="width: 90vw; height: 350px"></svg>
+	</div>
+	<div class="text">
+		Sentiment graph using TextBlob word analysis, graphed on <span style="color: #FF5733; font-weight: 600">polarity</span> and <span style="color: steelblue; font-weight: 600">subjectivity</span>, with any zero'd values removed. As you can tell, there's a lot of variance  and not much that can be gathered from the headlines alone. A future next step would be to analyze the wording of the entire article. 
+	</div>
+	<div class="division">
 		<svg id="chart2" width="90vw" height="500"></svg>
 	</div>
 	<!-- <svg src="area_chart_freq.js" id="chart3" type="module"></svg> -->
