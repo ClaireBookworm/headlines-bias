@@ -19,7 +19,7 @@ Promise.all(promises).then(datasets => {
 
 function drawCharts(datasets) {
     const margin = {top: 0, right: 0, bottom: 0, left: 100};
-    const width = window.innerWidth;  // Updated for correct width calculation
+    const width = window.innerWidth - margin.left;  // Updated for correct width calculation
     const height = 25; // Height of each individual chart
     const gap = 5; // Vertical gap between charts
 
@@ -30,6 +30,9 @@ function drawCharts(datasets) {
     const svgContainer = d3.select("#freq_chart3").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", overallHeight);
+
+	// d3.selectAll("line")
+	// 	.style("stroke", "white");
 
     const x = d3.scaleTime()
         .domain([
@@ -43,6 +46,7 @@ function drawCharts(datasets) {
         const y = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.frequency)])
             .range([height, 0]);
+	
 
         const area = d3.area()
             .x(d => x(d.date))
@@ -53,10 +57,14 @@ function drawCharts(datasets) {
         const chartGroup = svgContainer.append("g")
             .attr("transform", `translate(${margin.left},${index * (height + gap)})`);
 
+
         chartGroup.append("path")
             .datum(data)
-            .attr("fill", "#69b3a2")
-            .attr("d", area)
+            .attr("fill", "#a7d1c7")
+			.attr("d", area)
+			.attr("stroke", "#69b3a2")
+			.attr("stroke-width", 2)
+			// .attr("d", line)
             .on("mousemove", function(event, d) {
                 tooltip.style("display", "block")
                     .style("left", (event.pageX + 10) + "px")

@@ -44,6 +44,9 @@
 		.frequency-part2 {
 			margin: 2rem 5rem 2rem 2rem;
 		}
+		.division {
+			margin: 2rem 2rem 2rem 2rem;
+		}
 	</style>
 	
 </head>
@@ -56,6 +59,9 @@
 	</div>
 	<div id='timeline'>
 		<script src="timeline_p5.js"></script>
+	</div>
+	<div class="division">
+		<svg id="freq_chart3" style="width: 85vw; height: 400px;  margin-left: 1rem; font-size: 14px" src="condensed_word_freqs_d3.js"></svg>
 	</div>
 	<div class="frequency-part2">
 		<p>Bias in Headlines and differences in use of active/passive language to ascribe things like blame or victimhood to various groups of people. We're going to be ooking at various headlines and seeing how news outlets might converge onto a singular “bias.” A good example would be comparing a headline that says “[X] group massacres [Y] civilians” or “[Y] soldiers slaughtered,” but then comparing that with “Thousands of [X] killed.” This difference in language and the difference in amount of coverage strongly biases the public and determines what is kept at the forefront of Americans’ minds.
@@ -74,7 +80,6 @@
 	<svg id="chart2" style="width: 90vw; height: 600px"></svg>
 	<!-- <svg src="area_chart_freq.js" id="chart3" type="module"></svg> -->
 	<!-- <svg id="chart2" width="1750" height="500"></svg> -->
-	<svg id="freq_chart3" style="width: 85vw; height: 1000px;  margin-left: 3rem; font-size: 14px" src="condensed_word_freqs_d3.js"></svg>
 	<!-- <script src="condensed_word_freqs_d3.js">
 		words = ["analysis", "clinton", "democrats", "impeachment", "investigation", "mueller", "russia", "trump", "justice", "opinion", "perspective", "power", "republicans"]
 

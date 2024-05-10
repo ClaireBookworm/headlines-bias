@@ -24,7 +24,7 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 	frequencies = dataSorted.map(d => d.frequency);
 
 	const margin = { top: 20, right: 20, bottom: 30, left: 50 },
-      width = 1750 - margin.left - margin.right,
+      width = window.innerWidth - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 	// Setup SVG container
 	const svg = d3.select('#chart1').append('svg')
@@ -38,7 +38,7 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 	// Set up the scales
 	const xScale = d3.scaleBand()
 	.domain(words)
-	.range([0, 950]) // Slightly less than full width to fit axis
+	.range([0, width - margin.left - margin.right]) // Slightly less than full width to fit axis
 	.padding(0.1);
 
 	const yScale = d3.scaleLinear()
@@ -78,10 +78,22 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 		tooltip.style('visibility', 'hidden');
 	  });
 
+	// // Add x-axis
+	// svg.append('g')
+	// .attr('transform', 'translate(0, 450)') // Position at the bottom of the svg
+	// .call(d3.axisBottom(xScale));
+
 	// Add x-axis
-	svg.append('g')
-	.attr('transform', 'translate(0, 450)') // Position at the bottom of the svg
+	const xAxisGroup = svg.append('g')
+	.attr('transform', `translate(0, ${height})`) // Position at the bottom of the svg
 	.call(d3.axisBottom(xScale));
+
+	// Rotate x-axis labels to avoid overlap
+	xAxisGroup.selectAll("text")
+	.style("text-anchor", "end") // Anchor text at the end to align properly when rotated
+	.attr("dx", "-.8em")
+	.attr("dy", ".15em")
+	.attr("transform", "rotate(-35)"); // Rotate labels by -45 degrees
 
 	// Add y-axis
 	svg.append('g')
@@ -90,43 +102,4 @@ d3.json('./word_freq/top_words_cnn.json').then(data => {
 	}).catch(error => {
 	console.error('Error loading or parsing data:', error);
 	});
-
-// 	// Set up the SVG container
-// 	const svg = d3.select('body')
-// 		.append('svg')
-
-// 		.attr('width', 1000)
-// 		.attr('height', 500);
-
-// 	// Set up the scales
-// 	const xScale = d3.scaleBand()
-// 		.domain(words)
-// 		.range([0, 400])
-// 		.padding(0.1);
-
-// 	const yScale = d3.scaleLinear()
-// 		.domain([0, d3.max(frequencies)])
-// 		.range([400, 0]);
-
-// 	// Create the bars
-// 	svg.selectAll('rect')
-// 		.data(words)
-// 		.enter()
-// 		.append('rect')
-// 		.attr('x', d => xScale(d))
-// 		.attr('y', d => yScale(data[d]))
-// 		.attr('width', xScale.bandwidth())
-// 		.attr('height', d => (400 - yScale(data[d]))) // Change 'length' to 'height'
-// 		.attr('fill', 'steelblue');
-
-// 	// Add x-axis
-// 	svg.append('g')
-// 		.attr('transform', 'translate(0, 400)')
-// 		.call(d3.axisBottom(xScale));
-
-// 	// Add y-axis
-// 	svg.append('g')
-// 		.call(d3.axisLeft(yScale));
-// }).catch(error => {
-// 	console.error('Error loading or parsing data:', error);
-//   });
+// Path: sentiment_d3.js	
